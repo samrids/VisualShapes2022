@@ -40,3 +40,5 @@
 
   - All Shapes can be move at Runtime
   - All Shapes can be set capton, set caption alignment
+
+<img src="https://github.com/samrids/VisualShapes2022/blob/main/Screenshot/Snap3.png" alt="Delphi: Visual Shapes 2022">
