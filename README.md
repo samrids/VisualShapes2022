@@ -1,8 +1,8 @@
 # VisualShapes2022
-  Delphi Visual Shapes (2022)
-  Updated: 2022-05-04 (Y-M-D)
-  Add some feature by: Samrid Somboon
-  Email : samrids@gmail.com
+  Delphi Visual Shapes (2022)<br>
+  Updated: 2022-05-04 (Y-M-D)<br>
+  Add some feature by: Samrid Somboon<br>
+  Email : samrids@gmail.com<br>y
   ========================
 
   Original source from : http://kylixapps.narod.ru/components5.html
@@ -17,18 +17,18 @@
 
   Geometric Shapes
 
-  TCircleShape              - Circle
-  TEllipseShape             - Ellipse
-  TSquareShape              - Square
-  TRectShape                - Rectangle
-  TRoundSquareShape         - Round Square
-  TRoundRectShape           - Round Rectangle
-  TTriangleShape            - Triangle
-  TParallelogramShape       - Parallelogram
-  TTrapezoidShape           - Trapezoid
-  TPentagonShape            - Pentagon
-  THexagonShape             - Hexagon
-  TOctagonShape             - Nonagon
+  TCircleShape              - Circle<br>
+  TEllipseShape             - Ellipse<br>
+  TSquareShape              - Square<br>
+  TRectShape                - Rectangle<br>
+  TRoundSquareShape         - Round Square<br>
+  TRoundRectShape           - Round Rectangle<br>
+  TTriangleShape            - Triangle<br>
+  TParallelogramShape       - Parallelogram<br>
+  TTrapezoidShape           - Trapezoid<br>
+  TPentagonShape            - Pentagon<br>
+  THexagonShape             - Hexagon<br>
+  TOctagonShape             - Nonagon<br>
 
 
   Special Shapes
