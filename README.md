@@ -5,6 +5,8 @@
   Email : samrids@gmail.com
   ========================
 
+  Original source from : http://kylixapps.narod.ru/components5.html
+
   This unit contains a set of different shape components. Some of them can
   already be displayed using Delphi's standard TShape component.
 
