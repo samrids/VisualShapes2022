@@ -2,7 +2,7 @@
   Delphi Visual Shapes (2022)<br>
   Updated: 2022-05-04 (Y-M-D)<br>
   Add some feature by: Samrid Somboon<br>
-  Email : samrids@gmail.com<br>y
+  Email : samrids@gmail.com<br>
   ========================
 
   Original source from : http://kylixapps.narod.ru/components5.html
