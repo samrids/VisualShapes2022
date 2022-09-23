@@ -78,6 +78,10 @@ type
     FinReposition: Boolean;
     FOldPt: TPoint;
     FAlignment: TAlignment;
+
+    FOnMouseEnter,
+    FOnMouseLeave : TNotifyEvent;
+
     procedure ChangeRedraw(Sender: TObject);
     procedure SetBrush(Value: TBrush);
     procedure SetPen(Value: TPen);
@@ -99,6 +103,10 @@ type
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState;
       X, Y: Integer); override;
 
+    procedure CMMouseEnter (var msg:tmessage); message cm_mouseenter;
+    procedure CMMouseLeave (var msg:tmessage); message cm_mouseleave;
+
+
     // procedure Invalidate;
   public
     constructor Create(AOwner: TComponent); override;
@@ -113,6 +121,7 @@ type
     property Alignment: TAlignment read FAlignment write SetAlignment
       default taCenter;
     property Caption;
+    procedure Click; override;
     property Font;
     property DragMode;
     property Enabled;
@@ -133,6 +142,8 @@ type
     property OnEndDrag;
     property OnMouseDown;
     property OnMouseMove;
+    property OnMouseEnter : TNotifyEvent read FOnMouseEnter write FOnMouseEnter;
+    property OnMouseLeave : TNotifyEvent read FOnMouseLeave  write FOnMouseLeave;
     property OnMouseUp;
     property OnStartDrag;
   end;
@@ -313,6 +324,7 @@ begin
   FShadowOffset := 2;
   FShadowColor := clBtnShadow;
 
+
   FAlignment := taCenter;
 end;
 
@@ -320,6 +332,7 @@ destructor TCustomShape.Destroy;
 begin
   FBrush.Free;
   FPen.Free;
+
   inherited Destroy;
 end;
 
@@ -432,10 +445,26 @@ begin
   end;
 end;
 
+procedure TCustomShape.Click;
+begin
+  inherited;
+
+end;
+
 procedure TCustomShape.CMFontChanged(var Msg: TMessage);
 begin
   inherited;
   Invalidate;
+end;
+
+procedure TCustomShape.CMMouseEnter(var msg: tmessage);
+begin
+if Assigned(FOnMouseEnter) then FOnMouseEnter(self);
+end;
+
+procedure TCustomShape.CMMouseLeave(var msg: tmessage);
+begin
+if Assigned(FOnMouseLeave) then FOnMouseLeave(self);
 end;
 
 procedure TCustomShape.CMTextChanged(var Msg: TMessage);
@@ -466,7 +495,6 @@ var
 begin
   if FAllowRuntimeMove then
   begin
-
     if FinReposition then
     begin
       Screen.Cursor := crSize; // Move
