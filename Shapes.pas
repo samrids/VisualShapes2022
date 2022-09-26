@@ -78,6 +78,7 @@ type
     FinReposition: Boolean;
     FOldPt: TPoint;
     FAlignment: TAlignment;
+    FVerticalAlignment: TVerticalAlignment;
 
     FOnMouseEnter,
     FOnMouseLeave : TNotifyEvent;
@@ -90,6 +91,7 @@ type
     procedure SetShadowColor(Value: TColor);
     procedure SetAllowRuntimeMove(const Value: Boolean);
     procedure SetAlignment(const Value: TAlignment);
+    procedure SetVerticalAlignment(const Value: TVerticalAlignment);
   protected
     procedure Paint; override;
     procedure CMFontChanged(var Msg: TMessage); message CM_FONTCHANGED;
@@ -120,6 +122,7 @@ type
     property Anchors;
     property Alignment: TAlignment read FAlignment write SetAlignment
       default taCenter;
+    property VerticalAlignment : TVerticalAlignment read FVerticalAlignment write SetVerticalAlignment default taVerticalCenter;
     property Caption;
     procedure Click; override;
     property Font;
@@ -339,8 +342,9 @@ end;
 procedure TCustomShape.Paint;
 const
   Alignments: array [TAlignment] of Longint = (DT_LEFT, DT_RIGHT, DT_CENTER);
+  VerticalAlignments: array[TVerticalAlignment] of Longint = (DT_TOP, DT_BOTTOM, DT_VCENTER);
 var
-  Rect: TRect;
+  Rect,RectVertical: TRect;
   FontHeight: Integer;
   Flags: Longint;
 begin
@@ -355,6 +359,7 @@ begin
 
   Canvas.Font.Assign(Font);
   Rect := ClientRect;
+  RectVertical:= Rect;
   Font := Self.Font;
   FontHeight := Canvas.TextHeight('W');
   with Rect do
@@ -365,6 +370,11 @@ begin
       Left := Left + 10;
     if FAlignment = taRightJustify then
       Right := Right - 10;
+    if FVerticalAlignment = TVerticalAlignment.taAlignTop then
+      Top := (RectVertical.Top + FontHeight)-10;
+    if FVerticalAlignment = TVerticalAlignment.taAlignBottom then
+      Bottom := (RectVertical.Bottom - FontHeight)+8;
+
     if (Self.ClassType = TBubbleShape) then
     begin
        Top := Top -  Round((0.60 * Top));
@@ -383,7 +393,10 @@ begin
   end;
   // DrawText(Canvas.Handle, PChar(Caption), -1, Rect, DT_VCENTER or DT_CENTER or DT_SINGLELINE);
 
-  Flags := DT_EXPANDTABS or DT_VCENTER or Alignments[FAlignment];
+  Flags := DT_EXPANDTABS or
+           DT_SINGLELINE or
+           VerticalAlignments[FVerticalAlignment]
+           or Alignments[FAlignment];
   Flags := DrawTextBiDiModeFlags(Flags);
   DrawText(Canvas.Handle, PChar(Caption), -1, Rect, Flags);
 
@@ -434,6 +447,15 @@ begin
     FShadowOffset := Value;
     Invalidate;
   end;
+end;
+
+procedure TCustomShape.SetVerticalAlignment(const Value: TVerticalAlignment);
+begin
+  if FVerticalAlignment <> Value then begin
+      FVerticalAlignment := Value;
+      Invalidate;
+  end;
+
 end;
 
 procedure TCustomShape.SetShadowColor(Value: TColor);
