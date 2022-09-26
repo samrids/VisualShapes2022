@@ -43,4 +43,4 @@
 
 <img src="https://github.com/samrids/VisualShapes2022/blob/main/Screenshot/Snap3.png" alt="Delphi: Visual Shapes 2022">
 <br>
-<img scr="https://github.com/samrids/VisualShapes2022/blob/main/Screenshot/Snap1.png" alt="Delphi: Visual Shapes 2022">
+<img src="https://github.com/samrids/VisualShapes2022/blob/main/Screenshot/Snap1.png" alt="Delphi: Visual Shapes 2022">
