@@ -328,7 +328,8 @@ begin
   FShadowColor := clBtnShadow;
 
 
-  FAlignment := taCenter;
+  FAlignment := TAlignment.taCenter;
+  FVerticalAlignment := TVerticalAlignment.taVerticalCenter;
 end;
 
 destructor TCustomShape.Destroy;
@@ -373,7 +374,7 @@ begin
     if FVerticalAlignment = TVerticalAlignment.taAlignTop then
       Top := (RectVertical.Top + FontHeight)-10;
     if FVerticalAlignment = TVerticalAlignment.taAlignBottom then
-      Bottom := (RectVertical.Bottom - FontHeight)+8;
+      Bottom := (RectVertical.Bottom - FontHeight)+5;
 
     if (Self.ClassType = TBubbleShape) then
     begin
@@ -391,7 +392,6 @@ begin
        Bottom := Top + FontHeight;
     end;
   end;
-  // DrawText(Canvas.Handle, PChar(Caption), -1, Rect, DT_VCENTER or DT_CENTER or DT_SINGLELINE);
 
   Flags := DT_EXPANDTABS or
            DT_SINGLELINE or
@@ -455,7 +455,6 @@ begin
       FVerticalAlignment := Value;
       Invalidate;
   end;
-
 end;
 
 procedure TCustomShape.SetShadowColor(Value: TColor);
